@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "nx serve web",
-    "build": "nx build web",
-    "lint": "nx lint",
+    "dev": "npx nx serve web",
+    "build": "npx nx build web",
+    "lint": "npx nx lint",
     "test": "node ./run-tests.js"
   },
   "private": true,
