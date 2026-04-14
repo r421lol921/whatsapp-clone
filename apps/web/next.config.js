@@ -8,12 +8,17 @@ const { composePlugins, withNx } = require('@nx/next');
  **/
 const nextConfig = {
   async rewrites() {
-    return [
-      {
+    const rewrites = [];
+    
+    // Only add rewrite if the static assets server URL is configured
+    if (process.env.NEXT_PUBLIC_STATIC_ASSETS_SERVER_URL) {
+      rewrites.push({
         source: '/api/file/attachment-download/:user_id*/:file_id*',
         destination: `${process.env.NEXT_PUBLIC_STATIC_ASSETS_SERVER_URL}api/file/attachment-download/:user_id*/:file_id*`,
-      },
-    ];
+      });
+    }
+    
+    return rewrites;
   },
   nx: {
     svgr: true,
